@@ -4,157 +4,238 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sied — Project Showcase</title>
-  <meta name="description" content="Project showcase for Sied. Data analytics projects using SQL, Excel, and Power BI." />
+  <meta name="description" content="A minimal project showcase for Sied — SQL, analytics, and practical business insights." />
 
   <style>
-    :root {
-      --bg: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --border: #e5e7eb;
-      --accent: #2563eb;
-      --card: #f8fafc;
-      --radius: 14px;
-      --max: 920px;
+    :root{
+      --bg:#ffffff;
+      --text:#0b1220;
+      --muted:#475569;
+      --border:#e5e7eb;
+      --surface:#f8fafc;
+      --accent:#2563eb;
+      --accent-2:#0ea5e9;
+      --shadow: 0 10px 30px rgba(2, 6, 23, 0.06);
+      --shadow-sm: 0 6px 18px rgba(2, 6, 23, 0.06);
+      --radius:16px;
+      --max: 980px;
     }
 
-    * {
-      box-sizing: border-box;
+    *{ box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter,
+                   Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Roboto, Inter, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
+    a{ color:inherit; }
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:56px 20px 80px;
     }
 
-    .wrap {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 48px 20px 72px;
+    /* Header */
+    .top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:18px;
+      padding-bottom:26px;
+      margin-bottom:28px;
+      border-bottom:1px solid var(--border);
     }
 
-    header {
-      padding-bottom: 22px;
-      margin-bottom: 28px;
-      border-bottom: 1px solid var(--border);
+    .title{
+      margin:0;
+      font-size:36px;
+      letter-spacing:-0.03em;
+      line-height:1.15;
     }
 
-    h1 {
-      margin: 0 0 8px;
-      font-size: 32px;
-      letter-spacing: -0.02em;
+    .subtitle{
+      margin:10px 0 0;
+      color:var(--muted);
+      max-width:68ch;
+      font-size:15.5px;
     }
 
-    .sub {
-      margin: 0;
-      color: var(--muted);
-      max-width: 60ch;
+    .badge{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:linear-gradient(180deg, #ffffff, #f8fafc);
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+      height:fit-content;
     }
 
-    .links {
-      margin-top: 16px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent));
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.10);
     }
 
-    .btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      text-decoration: none;
-      color: var(--text);
-      background: #ffffff;
-      transition: border-color 120ms ease, color 120ms ease, background 120ms ease;
+    .links{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
-    .btn:hover {
-      border-color: var(--accent);
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      text-decoration:none;
+      background:#fff;
+      color:var(--text);
+      font-size:14px;
+      transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease, color 120ms ease;
+    }
+
+    .btn:hover{
+      border-color: rgba(37, 99, 235, 0.55);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.10);
+      transform: translateY(-1px);
       color: var(--accent);
-      background: #f8fbff;
     }
 
-    main {
-      padding-top: 6px;
+    .btn.primary{
+      border-color: rgba(37, 99, 235, 0.35);
+      background: linear-gradient(180deg, #ffffff, #f3f7ff);
     }
 
-    h2 {
-      font-size: 18px;
-      margin: 22px 0 12px;
+    /* Sections */
+    h2{
+      margin:26px 0 12px;
+      font-size:16px;
+      letter-spacing:0.02em;
+      text-transform:uppercase;
+      color: var(--muted);
     }
 
-    .grid {
-      display: grid;
+    .grid{
+      display:grid;
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap:16px;
     }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
+    .card{
+      background: linear-gradient(180deg, #ffffff, var(--surface));
+      border:1px solid var(--border);
       border-radius: var(--radius);
-      padding: 18px;
+      padding:20px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
     }
 
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: rgba(37, 99, 235, 0.30);
     }
 
-    .meta {
-      font-size: 13px;
-      color: var(--muted);
-      margin: 0 0 10px;
+    .card h3{
+      margin:0 0 8px;
+      font-size:18px;
+      letter-spacing:-0.01em;
     }
 
-    .desc {
-      margin: 0 0 12px;
+    .meta{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:13px;
     }
 
-    .actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:8px;
     }
 
-    .tag {
-      display: inline-block;
-      font-size: 12px;
-      padding: 4px 8px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--muted);
-      background: #ffffff;
-      margin-right: 6px;
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding:5px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:#fff;
+      color:var(--muted);
+      font-size:12px;
     }
 
-    ul {
-      padding-left: 18px;
+    .desc{
+      margin:10px 0 0;
+      font-size:15px;
+      color: var(--text);
+      max-width: 85ch;
     }
 
-    footer {
-      margin-top: 32px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 13px;
+    .actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
-    code {
-      background: #f6f6f6;
-      padding: 2px 6px;
-      border-radius: 8px;
+    ul{
+      margin:10px 0 0;
+      padding-left:18px;
+      color: var(--text);
     }
 
-    @media (min-width: 820px) {
-      .grid {
-        grid-template-columns: 1fr 1fr;
-      }
+    li{ margin:8px 0; }
+
+    .note{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:14px;
+      max-width: 85ch;
+    }
+
+    footer{
+      margin-top:34px;
+      padding-top:18px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    code{
+      background:#f6f6f6;
+      padding:2px 6px;
+      border-radius:8px;
+    }
+
+    @media (min-width: 860px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+      .wrap{ padding:64px 24px 96px; }
+      .title{ font-size:40px; }
     }
   </style>
 </head>
@@ -162,17 +243,25 @@
 <body>
   <div class="wrap">
 
-    <header>
-      <h1>Sied — Project Showcase</h1>
-      <p class="sub">
-        A minimal site to showcase my data analytics projects and practical SQL-based analysis.
-      </p>
+    <header class="top">
+      <div>
+        <h1 class="title">Sied — Project Showcase</h1>
+        <p class="subtitle">
+          A clean, minimal page linking to my analytics projects. Focused on SQL-based analysis, KPI reporting,
+          and translating results into practical business insights.
+        </p>
 
-      <div class="links">
-        <a class="btn" href="https://github.com/Sied-Hamid" target="_blank" rel="noopener">GitHub</a>
-        <!-- Optional -->
-        <!-- <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a> -->
-        <!-- <a class="btn" href="YOUR-RESUME-PDF" target="_blank">Resume</a> -->
+        <div class="links">
+          <a class="btn primary" href="https://github.com/Sied-Hamid" target="_blank" rel="noopener">GitHub</a>
+          <!-- Optional (uncomment when you have them) -->
+          <!-- <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noopener">LinkedIn</a> -->
+          <!-- <a class="btn" href="YOUR-RESUME-PDF" target="_blank" rel="noopener">Resume</a> -->
+        </div>
+      </div>
+
+      <div class="badge" title="Project-focused portfolio">
+        <span class="dot"></span>
+        <span>SQL • Analytics • Projects</span>
       </div>
     </header>
 
@@ -180,44 +269,46 @@
       <h2>Projects</h2>
 
       <div class="grid">
-
         <section class="card">
           <h3>UK Retail Sales Performance</h3>
-          <p class="meta">
+          <p class="meta">SQL analysis of retail sales to identify KPIs and revenue trends.</p>
+
+          <div class="tags">
             <span class="tag">SQL</span>
             <span class="tag">PostgreSQL</span>
             <span class="tag">Retail Analytics</span>
-          </p>
+            <span class="tag">KPI Tracking</span>
+          </div>
+
           <p class="desc">
-            SQL analysis of retail transaction data to calculate KPIs, analyse revenue trends,
-            and identify high-performing and underperforming products.
+            Analyses transaction-level retail data to calculate core KPIs (revenue, units, transactions),
+            evaluate monthly trends (MoM/YoY), and highlight product/store performance patterns.
           </p>
+
           <div class="actions">
-            <a class="btn" href="https://github.com/Sied-Hamid/tesbury-retail-sales-project" target="_blank" rel="noopener">
+            <a class="btn primary" href="https://github.com/Sied-Hamid/tesbury-retail-sales-project" target="_blank" rel="noopener">
               View Repository
             </a>
           </div>
         </section>
-
       </div>
 
       <h2>What these projects demonstrate</h2>
       <ul>
-        <li>Fact–dimension data modelling and validation</li>
-        <li>KPI calculation using SQL</li>
-        <li>Time-based analysis (monthly, MoM, YoY)</li>
-        <li>Clear documentation and business interpretation</li>
+        <li>Fact–dimension modelling and query design</li>
+        <li>KPI computation with defensive SQL (e.g., <code>NULLIF</code>)</li>
+        <li>Time-series analysis (monthly aggregation, MoM/YoY growth)</li>
+        <li>Clear documentation: question → query → insight</li>
       </ul>
 
-      <p>
-        This site intentionally stays minimal. Each project repository contains the full
-        analysis, queries, and documentation.
+      <p class="note">
+        This site stays intentionally minimal. Each repository contains the full SQL, outputs, and write-up.
       </p>
     </main>
 
     <footer>
-      Built with <code>GitHub Pages</code>. Last updated:
-      <span id="lastUpdated"></span>
+      <div>Built with <code>GitHub Pages</code>.</div>
+      <div>Last updated: <span id="lastUpdated"></span></div>
     </footer>
 
   </div>
